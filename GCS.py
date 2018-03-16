@@ -19,14 +19,6 @@ class Storage:
         os.environ['GCLOUD_PROJECT'] = project_name
         self.storage_client = storage.Client().from_service_account_json(key_file)
 
-    def getBlobs(self, bucket_name, prefix=None):
-        try:
-            self.bucket = self.storage_client.get_bucket(bucket_name)
-        except Exception as e:
-            print(e)
-            return None
-        return self.bucket.list_blobs(prefix=prefix)
-
     def uploadFile(self, file_path, dir_name=None, file_name=None, TTL_time=None, MIME=None):
         if not os.path.isfile(file_path) or not file_name:
             return False
@@ -35,7 +27,7 @@ class Storage:
         self.dir_name = None if file_name.find('index.html') > -1 else dir_name
         self.file_name = file_name
         try:
-            self.bucket = self.storage_client.get_bucket('infohub')
+            self.bucket = self.storage_client.get_bucket('www.ts082.xyz')
             blob_location = file_name if file_name.find('index.html') > -1 else dir_name + '/' + file_name
             self.blob = self.bucket.blob(blob_location)
             self.blob.cache_control = 'public, ' + cache_control
@@ -46,8 +38,3 @@ class Storage:
             return False
         return True
 
-    def getUrl(self):
-        try:
-            return '/'.join(filter(None.__ne__, ['http://www.infohubapp.com', self.dir_name, self.file_name]))
-        except:
-            return None
