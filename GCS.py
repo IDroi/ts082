@@ -29,7 +29,7 @@ class Storage:
         self.file_name = file_name
         try:
             self.bucket = self.storage_client.get_bucket('www.ts082.xyz')
-            blob_location = file_name if file_name.find('index.html') > -1 else dir_name + '/' + file_name
+            blob_location = dir_name + '/' + file_name
             self.blob = self.bucket.blob(blob_location)
             self.blob.cache_control = 'public, ' + cache_control
             self.blob.upload_from_filename(file_path, content_type=MIME, )
