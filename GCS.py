@@ -11,6 +11,7 @@ from google.cloud import storage
 import os
 import os.path
 import magic
+import argparse
 
 class Storage:
     def __init__(self, project_name, key_file):
@@ -38,3 +39,24 @@ class Storage:
             return False
         return True
 
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(usage='python GCS.py', description='Upload file to www.ts082.xyz buckets on google storage.')
+    parser.add_argument('-p', '--project', help='what project name on google storage', required=True)
+    parser.add_argument('-k', '--key', help='where key file to be placed')
+    parser.add_argument('-f', '--file', help='what file to be uploaded', required=True)
+    parser.add_argument('-d', '--dir', help='where file to be placed on google storage', required=True)
+    parser.add_argument('-n', '--name', help='what file name on google storage', required=True)
+    parser.add_argument('-c', '--cache', type=int, help='seconds CDN cache will expire')
+    parser.add_argument('-m', '--mime', help='MIME of the file')
+    args = parser.parse_args()
+
+    project_name = args.project
+    key_file_path = args.key
+    file_path = args.file
+    dir_name = args.dir
+    file_name = args.name
+    cache_expire = args.cache
+    mime = args.mime
+
+    storage = Storage(project_name, key_file_path)
+    print(storage.uploadFile(file_path, dir_name, file_name, cache_expire, mime))
