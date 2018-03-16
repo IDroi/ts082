@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>搜索</title>
+		<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1">
+		<link rel="stylesheet" href="http://www.infohubapp.com/css/infohub-news-query.1.00.001.css" type="text/css" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+		<script src="http://www.infohubapp.com/javascript/infohub-news-query.1.00.001.js"></script>
+		<script>
+			$(function () {
+				var browser_locale = navigator.language || navigator.browserLanguage || "en-US"; // For IE10 and earlier versions
+				var language = browser_locale.substring(0,3);
+				var country = browser_locale.substring(3,5).toUpperCase();
+
+				// case 1: default news query
+				var query = $.newsquery({
+					'utm_source': 'ts082',
+					'language': language,
+					'country': country,
+					'image_position': 'left',
+					'query_size': 10,
+					'appendToSelector': '#infohub-news-container'
+				});
+				query.show();
+			});
+		</script>
+
+		<form class="search">
+			<span class="icon icon-search"></span>
+			<input type="text" id="searchContent" />
+			<!-- <span class="icon icon-close"></span> -->
+			<a class="btnSearch" href="javascript:searchApp();"><span>Search</span></a>
+		</form>
+
+		<div id='infohub-news-container'>
+		</div>
+
+		<div class="content">
+				<!-- <p class="title">Frequently visited sites</p> -->
+				<ul>
+					<li>
+						<a href="http://www.bing.com">
+							<img src="images/logo_bing.png"/><span>Bing</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.bbc.com">
+							<img src="images/logo_bbc.png"/><span>BBC</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.google.com">
+							<img src="images/logo_google.png"/><span>Google</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.soundcloud.com">
+							<img src="images/logo_soungcloud.png"/><span>SoundCloud</span>
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="http://www.youtube.com">
+							<img src="images/logo_youtube.png"/><span>YouTube</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.pinterest.com">
+							<img src="images/logo_pinterest.png"/><span>Pinterest</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.instagram.com">
+							<img src="images/logo_instagram.png"/><span>Instagram</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.facebook.com">
+							<img src="images/logo_facebook.png"/><span>Facebook</span>
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="http://www.vimeo.com">
+							<img src="images/logo_vimeo.png"/><span>Vimeo</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.yahoo.com">
+							<img src="images/logo_yahoo.png"/><span>Yahoo</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.amazon.com">
+							<img src="images/logo_amazon.png"/><span>Amazon</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.twitter.com">
+							<img src="images/logo_twitter.png"/><span>Twitter</span>
+						</a>
+					</li>
+					
+					
+					<li>
+						<a href="http://www.wikipedia.com">
+							<img src="images/logo_wikipedia.png"/><span>Wikipedia</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.snapchat.com">
+							<img src="images/logo_snapchat.png"/><span>Snapchat</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.imdb.com">
+							<img src="images/logo_imdb.png"/><span>IMDB</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.netflix.com">
+							<img src="images/logo_netflex.png"/><span>Netflix</span>
+						</a>
+					</li>
+				</ul>
+				<!--<a class="more" href="#">View More</a>-->
+			</div>
+		
+		<script type="text/javascript">
+			function searchApp(){
+				var value = document.getElementById("searchContent").value;
+				if(value != null && value != ""){
+					window.location.href = "http://web.start.fyi/search?rtag=droi&source=browser#gsc.q=" + value;
+				}else{
+					alert("Input is empty!")
+				}
+				
+			}
+		</script>
+	</body>
+</html>
