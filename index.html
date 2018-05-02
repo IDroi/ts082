@@ -4,12 +4,12 @@
 		<meta charset="utf-8" />
 		<title>搜索</title>
 		<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1">
-		<link rel="stylesheet" href="https://www.infohubapp.com/css/infohub-news-query.1.00.004.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="https://www.infohubapp.com/css/infohub-news-query.1.00.005.css" type="text/css" media="screen">
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 	</head>
 	<body>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-		<script src="https://www.infohubapp.com/javascript/infohub-news-query.1.00.004.js"></script>
+		<script src="https://www.infohubapp.com/javascript/infohub-news-query.1.00.005.js"></script>
 		<script>
 
 			VERSION = 1;
@@ -30,7 +30,7 @@
 
 			$(function () {
 				var browser_locale = navigator.language || navigator.browserLanguage || "en-US"; // For IE10 and earlier versions
-				var language = browser_locale.substring(0,3);
+				var language = browser_locale.substring(0,2);
 				var country = browser_locale.substring(3,5).toUpperCase();
 
 				var utm_source = getURLParameter('utm_source') || 'ts082';
@@ -182,12 +182,12 @@
 				switch(event_name) {
 					case 'click_google_search':
 						event_socket.send(post_json);
-						console.log('send ' + event_name + ' event: ' + post_json);
+						console.log('send ' + event_name);
 						break;
 					case 'impression_google_search':
 						setTimeout(function() {
 							event_socket.send(post_json);
-							console.log('send ' + event_name + ' event: ' + post_json);
+							console.log('send ' + event_name);
 						}, 3000);
 						break;
 					default:
