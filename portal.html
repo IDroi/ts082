@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>搜索</title>
+		<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1">
+		<link rel="stylesheet" href="https://www.infohubapp.com/css/infohub-news-query.1.00.004.css" type="text/css" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/portal.css"/>
+	</head>
+	<body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+		<script src="https://www.infohubapp.com/javascript/infohub-news-query.1.00.004.js"></script>
+		<script>
+
+			VERSION = 1;
+
+			function getURLParameter(sParam, specificURL) {
+				if(specificURL == undefined) {
+					specificURL = window.location.search.substring(1);
+				}	
+				var sPageURL = specificURL;
+				var sURLVariables = sPageURL.split('&');
+				for(var i = 0; i < sURLVariables.length; i++) {
+					var sParameterName = sURLVariables[i].split('=');
+					if(sParameterName[0] == sParam) {
+						return sParameterName[1];
+					}
+				}
+			}
+
+			$(function () {
+				var browser_locale = navigator.language || navigator.browserLanguage || "en-US"; // For IE10 and earlier versions
+				var language = browser_locale.substring(0,3);
+				var country = browser_locale.substring(3,5).toUpperCase();
+
+				var utm_source = getURLParameter('utm_source') || 'ts082';
+				var utm_medium = getURLParameter('utm_medium') || 'javascript_api';
+				var utm_campaign = getURLParameter('utm_campaign') || 'news_click';
+
+				// case 1: default news query
+				var query = $.newsquery({
+					'utm_source': utm_source,
+					'utm_medium': utm_medium,
+					'utm_campaign': utm_campaign,
+					'language': language,
+					'country': country,
+					'image_position': 'left',
+					'query_size': 10,
+					'appendToSelector': '#infohub-news-container'
+				});
+				query.show();
+				sendEventTracker(utm_source, 'impression_google_search');
+			});
+		</script>
+
+		<form class="search">
+			<span class="icon icon-search"></span>
+			<input type="text" id="searchContent" />
+			<!-- <span class="icon icon-close"></span> -->
+			<a class="btnSearch" href="javascript:searchApp();"><span>Search</span></a>
+		</form>
+
+		<div id='infohub-news-container'>
+		</div>
+		
+		<script type="text/javascript">
+			function createSocketToBaas() {
+				var socket = new XMLHttpRequest();
+				var url = "https://api.droibaas.com/api/v2/infohub_task_handler";
+				socket.open("POST", url, true);
+				socket.setRequestHeader("X-Droi-AppID", "of2umbzhoAcZ8_DnHF95NP-1SLhCdahYlQDIVxMA");
+				socket.setRequestHeader("X-Droi-Api-Key", "0vTgWpqC8-ksol5rJb95oF0lUIYFa3PGQorsVXyuHWx7gR_5JpckMWcIIxH6wOPQ");
+				socket.setRequestHeader("Content-Type", "application/json");
+				return socket;
+			}
+
+			function sendEventTracker(utm_source, event_name, value) {
+				utm_source = utm_source || 'ts082';
+				var event_socket = createSocketToBaas();
+
+				var post_data = {
+					"task": "upload-channel-event",
+					"channel": utm_source,
+					"event": event_name,
+					"value": value,
+					"version": VERSION
+				}
+				var post_json = JSON.stringify(post_data);
+				switch(event_name) {
+					case 'click_google_search':
+						event_socket.send(post_json);
+						console.log('send ' + event_name);
+						break;
+					case 'impression_google_search':
+						setTimeout(function() {
+							event_socket.send(post_json);
+							console.log('send ' + event_name);
+						}, 3000);
+						break;
+					default:
+						console.log('unknown event_name: ' + event_name);
+				}
+				
+			}
+
+			function searchApp(){
+				var value = document.getElementById("searchContent").value;
+				if(value != null && value != "") {
+					var utm_source = getURLParameter('utm_source') || 'ts082';
+					sendEventTracker(utm_source, 'click_google_search', value);
+					window.location.href = "http://web.start.fyi/search?rtag=droi&source=browser#gsc.q=" + value;
+				} else {
+					alert("Input is empty!")
+				}
+			}
+		</script>
+	</body>
+</html>
