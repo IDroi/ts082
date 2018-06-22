@@ -29,11 +29,12 @@ a,a:hover{text-decoration:none; color:#000;}
 .search{
 	position: relative;
 	width: 94%;
-	margin: 30px auto 20px;
+	margin: 30px auto 0px;
 	background: #fff;
 	border-radius:3px;
 	box-shadow: 1px 1px 1px rgba(0,0,0,.3);
 	overflow: hidden;
+	z-index: 10;
 }
 .search input{
 	display: inline-block;
@@ -53,7 +54,7 @@ a,a:hover{text-decoration:none; color:#000;}
 .search .icon-close{
 	position: absolute;
 	top: 12px;
-	right: 24%;
+	right: 26%;
 	vertical-align: middle;
 }
 
@@ -112,6 +113,46 @@ a,a:hover{text-decoration:none; color:#000;}
 
 /* InfoHub news part */
 #infohub-news-container {
-	margin: 0 auto 20px;
+	margin: 20px auto 20px;
 	width: 94%;
+}
+
+/* Google custom search suggestions */
+#suggestions-container-relative {
+	position: relative;
+	margin: 0 auto;
+	width: 94%;
+	height: 0;
+	z-index: 9;
+	margin-top: -1px;
+}
+
+#suggestions-container {
+	position: absolute;
+	width: 100%;
+	background: #fff;
+
+	box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	border-bottom-left-radius:3px;
+	border-bottom-right-radius:3px;
+}
+
+#suggestions-container ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#suggestions-container ul > li:not(:last-child) {
+	border-bottom: 1px solid #e5e5e5
+}
+
+#suggestions-container li {
+	line-height: 28px;
+	padding: 10px 3px 10px 46px;
+	font-size: 14px;
+}
+
+#suggestions-container .selected{
+	background: #eee;
 }

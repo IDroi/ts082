@@ -55,106 +55,114 @@
 
 		<form class="search">
 			<span class="icon icon-search"></span>
+			<input type="text" style="display: none">
 			<input type="text" id="searchContent" />
-			<!-- <span class="icon icon-close"></span> -->
+			<span class="icon icon-close"></span>
 			<a class="btnSearch" href="javascript:searchApp();"><span>Search</span></a>
 		</form>
+
+		<div id="suggestions-container-relative">
+			<div id="suggestions-container">
+				<ul>
+				</ul>
+			</div>
+		</div>
 
 		<div id='infohub-news-container'>
 		</div>
 
 		<div class="content">
-				<!-- <p class="title">Frequently visited sites</p> -->
-				<ul>
-					<li>
-						<a href="http://www.bing.com">
-							<img src="images/logo_bing.png"/><span>Bing</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.bbc.com">
-							<img src="images/logo_bbc.png"/><span>BBC</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.google.com">
-							<img src="images/logo_google.png"/><span>Google</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.soundcloud.com">
-							<img src="images/logo_soungcloud.png"/><span>SoundCloud</span>
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="http://www.youtube.com">
-							<img src="images/logo_youtube.png"/><span>YouTube</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.pinterest.com">
-							<img src="images/logo_pinterest.png"/><span>Pinterest</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.instagram.com">
-							<img src="images/logo_instagram.png"/><span>Instagram</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.facebook.com">
-							<img src="images/logo_facebook.png"/><span>Facebook</span>
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="http://www.vimeo.com">
-							<img src="images/logo_vimeo.png"/><span>Vimeo</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.yahoo.com">
-							<img src="images/logo_yahoo.png"/><span>Yahoo</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.amazon.com">
-							<img src="images/logo_amazon.png"/><span>Amazon</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.twitter.com">
-							<img src="images/logo_twitter.png"/><span>Twitter</span>
-						</a>
-					</li>
-					
-					
-					<li>
-						<a href="http://www.wikipedia.com">
-							<img src="images/logo_wikipedia.png"/><span>Wikipedia</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.snapchat.com">
-							<img src="images/logo_snapchat.png"/><span>Snapchat</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.imdb.com">
-							<img src="images/logo_imdb.png"/><span>IMDB</span>
-						</a>
-					</li>
-					<li>
-						<a href="http://www.netflix.com">
-							<img src="images/logo_netflex.png"/><span>Netflix</span>
-						</a>
-					</li>
-				</ul>
-				<!--<a class="more" href="#">View More</a>-->
-			</div>
+			<!-- <p class="title">Frequently visited sites</p> -->
+			<ul>
+				<li>
+					<a href="http://www.bing.com">
+						<img src="images/logo_bing.png"/><span>Bing</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.bbc.com">
+						<img src="images/logo_bbc.png"/><span>BBC</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.google.com">
+						<img src="images/logo_google.png"/><span>Google</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.soundcloud.com">
+						<img src="images/logo_soungcloud.png"/><span>SoundCloud</span>
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="http://www.youtube.com">
+						<img src="images/logo_youtube.png"/><span>YouTube</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.pinterest.com">
+						<img src="images/logo_pinterest.png"/><span>Pinterest</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.instagram.com">
+						<img src="images/logo_instagram.png"/><span>Instagram</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.facebook.com">
+						<img src="images/logo_facebook.png"/><span>Facebook</span>
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="http://www.vimeo.com">
+						<img src="images/logo_vimeo.png"/><span>Vimeo</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.yahoo.com">
+						<img src="images/logo_yahoo.png"/><span>Yahoo</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.amazon.com">
+						<img src="images/logo_amazon.png"/><span>Amazon</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.twitter.com">
+						<img src="images/logo_twitter.png"/><span>Twitter</span>
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="http://www.wikipedia.com">
+						<img src="images/logo_wikipedia.png"/><span>Wikipedia</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.snapchat.com">
+						<img src="images/logo_snapchat.png"/><span>Snapchat</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.imdb.com">
+						<img src="images/logo_imdb.png"/><span>IMDB</span>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.netflix.com">
+						<img src="images/logo_netflex.png"/><span>Netflix</span>
+					</a>
+				</li>
+			</ul>
+			<!--<a class="more" href="#">View More</a>-->
+		</div>
 		
 		<script type="text/javascript">
 			function createSocketToBaas() {
@@ -195,6 +203,74 @@
 				}
 				
 			}
+
+			$("#searchContent").on("paste keyup", function() {
+				var value = $(this).val();
+				if(value.length > 0) {
+					$('.icon-close').show();
+				} else {
+					$('.icon-close').hide();
+					$("#suggestions-container ul").empty();
+					return;
+				}
+				var n = document.createElement("script");
+				n.src = "https://clients1.google.com/complete/search?client=chrome&q=" + value + "&callback=suggestCallBack", document.body.appendChild(n)
+			});
+
+			$('#searchContent').focusout(function() {
+				$("#suggestions-container ul").empty();
+			});
+
+			$('.icon-close').click(function() {
+				document.getElementById("searchContent").value = "";
+				$("#suggestions-container ul").empty();
+				$(this).hide();
+			});
+
+			suggestCallBack = function(data) {
+				$("#suggestions-container ul").empty();
+				var size = data[1].length;
+				var counter = 0;
+				for(var i = 0; i < size; i++) {
+					var type = data[4]["google:suggesttype"][i];
+					if(type == "QUERY") {
+						var value = boldString(data[1][i], data[0]);
+						$("#suggestions-container ul").append('<li>' + value + '</li>');
+						counter++;
+					}
+
+					if(counter >= 5) {
+						break;
+					}
+				}
+
+				$("#suggestions-container ul li").hover(function() {
+					$("#suggestions-container ul li").removeClass("selected");
+   					$(this).addClass("selected");                   
+   					return false;
+				});
+
+				$("#suggestions-container ul li").click(function() {
+					document.getElementById("searchContent").value = $(this).text();
+					searchApp();
+				});
+			}
+
+			function boldString(str, find) {
+				var re = new RegExp(find);
+				return str.replace(re, '<b>'+find+'</b>');
+			}
+
+			function doc_keyUp(e) {
+				if(e.keyCode == 13) {
+					console.log('click enter');
+					// enter key
+					$("#suggestions-container ul").empty();
+					searchApp();
+				}
+			}
+
+			document.addEventListener('keypress', doc_keyUp, false);
 
 			function searchApp(){
 				var value = document.getElementById("searchContent").value;
