@@ -57,7 +57,7 @@
 			<span class="icon icon-search"></span>
 			<input type="text" style="display: none">
 			<input type="text" id="searchContent" />
-			<span class="icon icon-close"></span>
+			<span class="icon icon-close" style="display: none;"></span>
 			<a class="btnSearch" href="javascript:searchApp();"><span>Search</span></a>
 		</form>
 
@@ -218,6 +218,9 @@
 			});
 
 			$('#searchContent').focusout(function() {
+				if($('#suggestions-container ul li' + ':hover').length) {
+        			return;
+    			}
 				$("#suggestions-container ul").empty();
 			});
 
